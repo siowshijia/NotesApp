@@ -13,7 +13,7 @@ const HomeScreen = ({navigation}) => {
       colors={['#1B284F', '#351159', '#421C45', '#3B184E']}
       style={{flex: 1}}>
       <ScrollView>
-        <View style={{paddingTop: 20, paddingBottom: 20}}>
+        <View style={{paddingTop: 20, paddingBottom: 120}}>
           <View style={{paddingLeft: 20, paddingRight: 20}}>
             <View
               style={{
@@ -102,7 +102,7 @@ const HomeScreen = ({navigation}) => {
                 <Text style={{color: '#fff', fontSize: 14}}>
                   Overview of basic computer networking knowledge
                 </Text>
-                <IconArrow width={20} height={20} style={{marginLeft: 20}} />
+                <IconArrow width={18} height={18} style={{marginLeft: 20}} />
               </View>
             </View>
             
@@ -131,7 +131,7 @@ const HomeScreen = ({navigation}) => {
                 <Text style={{color: '#fff', fontSize: 14}}>
                   Overview of basic computer networking knowledge
                 </Text>
-                <IconArrow width={20} height={20} style={{marginLeft: 20}} />
+                <IconArrow width={18} height={18} style={{marginLeft: 20}} />
               </View>
             </View>
             
@@ -160,7 +160,7 @@ const HomeScreen = ({navigation}) => {
                 <Text style={{color: '#fff', fontSize: 14}}>
                   Overview of basic computer networking knowledge
                 </Text>
-                <IconArrow width={20} height={20} style={{marginLeft: 20}} />
+                <IconArrow width={18} height={18} style={{marginLeft: 20}} />
               </View>
             </View>
           </View>
