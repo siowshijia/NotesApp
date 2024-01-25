@@ -68,18 +68,15 @@ const SummaryHeader = () => {
         name="SummaryStack"
         component={SummaryScreen}
         options={{
-          headerLeft: () => <Text style={{textAlign: 'right'}}>Summary</Text>,
+          headerLeft: () => <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>Summary</Text>,
           headerTitle: null,
           headerStyle: {
             backgroundColor: '#280947',
-            borderBottomLeftRadius: 20,
-            borderBottomRightRadius: 20,
-            height: 150,
           },
           headerTitleStyle: {
-            fontWeight: '600',
+            color: 'rgba(255,255,255,0)',
           },
-          headerTransparent: false,
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -93,8 +90,14 @@ const SettingsHeader = () => {
         name="SettingsStack"
         component={SettingsScreen}
         options={{
-          headerLeft: () => <Text style={{textAlign: 'right'}}>Settings</Text>,
+          headerLeft: () => <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>Settings</Text>,
           headerTitle: null,
+          headerStyle: {
+            backgroundColor: '#280947',
+          },
+          headerTitleStyle: {
+            color: 'rgba(255,255,255,0)',
+          },
         }}
       />
     </Stack.Navigator>
@@ -102,7 +105,7 @@ const SettingsHeader = () => {
 };
 
 const BottomTabNavigator = () => {
-    const NewNoteButton = () => null;
+  const NewNoteButton = () => null;
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -167,7 +170,16 @@ const BottomTabNavigator = () => {
         component={NewNoteButton}
         options={({navigation}) => ({
           tabBarButton: () => (
-            <TouchableOpacity style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}
+            <TouchableOpacity
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
               onPress={() => navigation.navigate('NewNote')}>
               <IconPlus width={36} height={36} />
             </TouchableOpacity>
