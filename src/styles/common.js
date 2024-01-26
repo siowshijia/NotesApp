@@ -20,6 +20,17 @@ export const commonStyles = StyleSheet.create({
     fontSize: 16,
     flex: 1,
   },
+  titleTextLg: {
+    color: '#fff',
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  navTabBottom: {
+    flex: 1,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderColor: 'rgba(255,255,255,0)',
+  },
   rowHorzCenter: {
     flexDirection: 'row',
     alignItems: 'center',

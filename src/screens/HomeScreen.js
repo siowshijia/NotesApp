@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import IconClock from '../images/icon_clock.svg';
 import IconPen from '../images/icon_pen.svg';
@@ -7,8 +8,20 @@ import IconArrow from '../images/arrow.svg';
 import {commonStyles} from '../styles/common';
 import {space} from '../styles/space';
 import {homeStyles} from '../styles/home';
+import {useNotes} from '../context/NotesContext';
+import NoteItem from '../components/NoteItem';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+  const {notes} = useNotes();
+  
+  // Group notes by category
+  const groupedNotes = notes.reduce((acc, note) => {
+    acc[note.category] = acc[note.category] || [];
+    acc[note.category].push(note);
+    return acc;
+  }, {});
+  
   return (
     <LinearGradient
       start={{x: 0, y: 0}}
@@ -18,6 +31,26 @@ const HomeScreen = () => {
       <ScrollView>
         <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
           <View style={commonStyles.containerSpacingX}>
+          <View
+      style={{
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // right: 0,
+        // bottom: 0,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // // width: 36,
+        // // height: 36
+      }}>
+      <TouchableOpacity
+        style={{
+          zIndex: 10,
+        }}
+        onPress={() => navigation.navigate('NewNote')}>
+        <IconArrow width={36} height={36} />
+      </TouchableOpacity>
+    </View>
             <View
               style={{
                 ...commonStyles.rowHorzCenter,
@@ -26,38 +59,23 @@ const HomeScreen = () => {
               <IconClock width={20} height={20} />
               <Text style={homeStyles.mainTitle}>Recently created notes</Text>
             </View>
-
-            <View style={{marginBottom: space.m6}}>
-              <View
-                style={{
-                  ...commonStyles.rowHorzCenter,
-                  marginBottom: space.m2,
-                }}>
-                <IconPen width={20} height={20} />
-                <Text style={homeStyles.mainTitle}>Work and Study</Text>
+            
+            {/* Render notes by category */}
+            {Object.keys(groupedNotes).map((category) => (
+              <View key={category} style={{ marginBottom: space.m4 }}>
+                <View
+                  style={{
+                    ...commonStyles.rowHorzCenter,
+                    marginBottom: space.m2,
+                  }}>
+                  <IconPen width={20} height={20} />
+                  <Text style={homeStyles.noteTitle}>{category}</Text>
+                </View>
+                {groupedNotes[category].map((note) => (
+                  <NoteItem key={note.id} note={note} />
+                ))}
               </View>
-              <View style={homeStyles.noteItem}>
-                <Text style={homeStyles.noteItemText}>
-                  Overview of basic computer networking knowledge
-                </Text>
-                <IconArrow
-                  width={20}
-                  height={20}
-                  style={{marginLeft: space.m4}}
-                />
-              </View>
-              <View style={homeStyles.noteItem}>
-                <Text style={homeStyles.noteItemText}>
-                  How to calculate float multiplication and division in
-                  JavaScript
-                </Text>
-                <IconArrow
-                  width={20}
-                  height={20}
-                  style={{marginLeft: space.m4}}
-                />
-              </View>
-            </View>
+            ))}
           </View>
         </View>
       </ScrollView>

@@ -11,6 +11,8 @@ import IconSettings from './src/images/icon_settings.svg';
 import IconPlus from './src/images/icon_plus.svg';
 import IconBack from './src/images/icon_back.svg';
 import LinearGradient from 'react-native-linear-gradient';
+import {commonStyles} from './src/styles/common';
+import { NotesProvider } from './src/context/NotesContext';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,11 +26,7 @@ const HomeHeader = () => {
         name="HomeStack"
         component={HomeScreen}
         options={{
-          headerLeft: () => (
-            <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
-              Home
-            </Text>
-          ),
+          headerLeft: () => <Text style={commonStyles.titleTextLg}>Home</Text>,
           headerTitle: null,
           headerRight: () => (
             <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
@@ -55,15 +53,14 @@ const NewNoteHeader = () => {
         name="NewNoteStack"
         component={NewNoteScreen}
         options={{
-          headerLeft: () => <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={{flexDirection: 'row', alignItems: 'center'}}>
-          <IconBack width={24} height={24} />
-          <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
-            {' '}
-            New Note
-          </Text>
-        </TouchableOpacity>,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={commonStyles.rowHorzCenter}>
+              <IconBack width={24} height={24} />
+              <Text style={commonStyles.titleTextLg}> New Note</Text>
+            </TouchableOpacity>
+          ),
           headerTitle: null,
           headerStyle: {
             backgroundColor: '#280947',
@@ -85,9 +82,7 @@ const SummaryHeader = () => {
         component={SummaryScreen}
         options={{
           headerLeft: () => (
-            <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
-              Summary
-            </Text>
+            <Text style={commonStyles.titleTextLg}>Summary</Text>
           ),
           headerTitle: null,
           headerStyle: {
@@ -115,12 +110,9 @@ const SettingsHeader = () => {
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => navigation.goBack()}
-              style={{flexDirection: 'row', alignItems: 'center'}}>
+              style={commonStyles.rowHorzCenter}>
               <IconBack width={24} height={24} />
-              <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
-                {' '}
-                Settings
-              </Text>
+              <Text style={commonStyles.titleTextLg}> Settings</Text>
             </TouchableOpacity>
           ),
           headerTitle: null,
@@ -211,12 +203,7 @@ const BottomTabNavigator = () => {
         tabBarBackground: () => (
           <LinearGradient
             colors={['#1C0B37', '#1D0837']}
-            style={{
-              flex: 1,
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-              borderColor: 'rgba(255,255,255,0)',
-            }}
+            style={commonStyles.navTabBottom}
           />
         ),
       })}>
@@ -228,13 +215,15 @@ const BottomTabNavigator = () => {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Main" component={BottomTabNavigator} />
-        <Stack.Screen name="NewNote" component={NewNoteHeader} />
-        <Stack.Screen name="Settings" component={SettingsHeader} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NotesProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Main" component={BottomTabNavigator} />
+          <Stack.Screen name="NewNote" component={NewNoteHeader} />
+          <Stack.Screen name="Settings" component={SettingsHeader} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NotesProvider>
   );
 };
 

@@ -6,6 +6,11 @@ export const homeStyles = StyleSheet.create({
     color: 'rgba(255,255,255,0.7)',
     fontSize: 16,
   },
+  noteTitle: {
+    marginLeft: 10,
+    color: '#fff',
+    fontSize: 16,
+  },
   noteItem: {
     flexDirection: 'row',
     alignItems: 'center',

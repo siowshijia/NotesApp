@@ -1,9 +1,9 @@
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import IconArrow from '../images/arrow.svg';
-import space from '../styles/space';
 import {settingsStyles} from '../styles/settings';
 import {commonStyles} from '../styles/common';
+import {space} from '../styles/space';
 
 const LinkButton = ({onPress, icon, text}) => {
   return (
