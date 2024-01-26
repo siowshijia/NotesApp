@@ -9,6 +9,10 @@ const SummaryScreen = ({navigation}) => {
       end={{x: 1, y: 1}}
       colors={['#1B284F', '#351159', '#421C45', '#3B184E']}
       style={{flex: 1}}>
+      <Image
+        source={require('../images/bg_robot.png')}
+        style={{width: 229, height: 185, position: 'absolute', top: 0, right: 0}}
+      />
       <ScrollView>
         <View style={{paddingTop: 150, paddingBottom: 120}}>
           <View style={{flex:1, paddingLeft:20, paddingRight: 20, paddingVertical: 20, borderTopLeftRadius: 20, borderTopRightRadius: 20, backgroundColor: 'rgba(255,255,255,0.05)'}}>

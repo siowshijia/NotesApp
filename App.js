@@ -76,7 +76,7 @@ const SummaryHeader = () => {
           ),
           headerTitle: null,
           headerStyle: {
-            backgroundColor: '#280947',
+            backgroundColor: 'rgba(255,255,255,0)',
           },
           headerTitleStyle: {
             color: 'rgba(255,255,255,0)',
