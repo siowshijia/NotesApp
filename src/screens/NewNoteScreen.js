@@ -5,6 +5,8 @@ import {
   ScrollView,
   TouchableOpacity,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import RNPickerSelect from 'react-native-picker-select';
@@ -66,48 +68,53 @@ const NewNoteScreen = () => {
       end={{x: 1, y: 1}}
       colors={['#1B284F', '#351159', '#421C45', '#3B184E']}
       style={commonStyles.container}>
-      <ScrollView>
-        <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
-          <View style={commonStyles.containerSpacingX}>
-            <RNPickerSelect
-              items={categories}
-              onValueChange={value => setSelectedCategory(value)}
-              value={selectedCategory}
-              placeholder={{
-                label: 'Choose a category',
-                value: null,
-              }}
-              style={commonStyles.pickerContainer}
-              Icon={() => {
-                return <IconDown width={24} height={24} />;
-              }}
-            />
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={commonStyles.container}>
+        <ScrollView>
+          <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
+            <View style={commonStyles.containerSpacingX}>
+              <RNPickerSelect
+                items={categories}
+                onValueChange={value => setSelectedCategory(value)}
+                value={selectedCategory}
+                placeholder={{
+                  label: 'Choose a category',
+                  value: null,
+                }}
+                style={commonStyles.pickerContainer}
+                Icon={() => {
+                  return <IconDown width={24} height={24} />;
+                }}
+              />
 
-            {!!categoryError && (
-              <Text style={commonStyles.errorText}>{categoryError}</Text>
-            )}
+              {!!categoryError && (
+                <Text style={commonStyles.errorText}>{categoryError}</Text>
+              )}
 
-            <TextInput
-              style={commonStyles.textInput}
-              multiline
-              numberOfLines={5}
-              maxLength={maxCharacters}
-              value={noteText}
-              onChangeText={text => setNoteText(text)}
-              placeholder="Please input note content"
-              placeholderTextColor={'#fff'}
-            />
+              <TextInput
+                style={commonStyles.textInput}
+                multiline
+                numberOfLines={5}
+                maxLength={maxCharacters}
+                value={noteText}
+                onChangeText={text => setNoteText(text)}
+                placeholder="Please input note content"
+                placeholderTextColor={'#fff'}
+              />
 
-            <Text style={commonStyles.characterCounter}>
-              {noteText.length}/{maxCharacters}
-            </Text>
+              <Text style={commonStyles.characterCounter}>
+                {noteText.length}/{maxCharacters}
+              </Text>
 
-            {!!noteError && (
-              <Text style={commonStyles.errorText}>{noteError}</Text>
-            )}
+              {!!noteError && (
+                <Text style={commonStyles.errorText}>{noteError}</Text>
+              )}
+            </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+
       <View style={commonStyles.bottomContainer}>
         <TouchableOpacity
           onPress={handleSaveNote}
