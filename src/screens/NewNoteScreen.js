@@ -8,19 +8,55 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import RNPickerSelect from 'react-native-picker-select';
+import {useNavigation} from '@react-navigation/native';
 import IconDown from '../images/icon_down.svg';
 import {commonStyles} from '../styles/common';
 import {space} from '../styles/space';
+import {useNotes} from '../context/NotesContext';
 
 const NewNoteScreen = () => {
+  const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [noteText, setNoteText] = useState('');
+  const [categoryError, setCategoryError] = useState('');
+  const [noteError, setNoteError] = useState('');
+
+  const {addNote} = useNotes();
 
   const categories = [
-    {label: 'Work and Study', value: 'workandstudy'},
-    {label: 'Home Life', value: 'homelife'},
-    {label: 'Health and Wellness', value: 'healthandwellness'},
+    {label: 'Work and Study', value: 'Work and Study'},
+    {label: 'Home Life', value: 'Home Life'},
+    {label: 'Health and Wellness', value: 'Health and Wellness'},
   ];
+
+  const handleSaveNote = () => {
+    // Reset errors
+    setCategoryError('');
+    setNoteError('');
+
+    if (!selectedCategory) {
+      setCategoryError('Please choose a category.');
+    }
+
+    if (!noteText) {
+      setNoteError('Please input note content.');
+    }
+
+    if (selectedCategory && noteText) {
+      // Assuming you have an addNote method in your context
+      addNote({
+        category: selectedCategory,
+        content: noteText,
+      });
+
+      // After saving, navigate back to the home screen
+      navigation.navigate('Home');
+
+      // Reset the state after saving
+      setSelectedCategory(null);
+      setNoteText('');
+    }
+  };
 
   return (
     <LinearGradient
@@ -45,6 +81,10 @@ const NewNoteScreen = () => {
               }}
             />
 
+            {!!categoryError && (
+              <Text style={commonStyles.errorText}>{categoryError}</Text>
+            )}
+
             <TextInput
               style={commonStyles.textInput}
               multiline
@@ -54,12 +94,16 @@ const NewNoteScreen = () => {
               placeholder="Please input note content"
               placeholderTextColor={'#fff'}
             />
+
+            {!!noteError && (
+              <Text style={commonStyles.errorText}>{noteError}</Text>
+            )}
           </View>
         </View>
       </ScrollView>
       <View style={commonStyles.bottomContainer}>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={handleSaveNote}
           style={commonStyles.bottomContainerButton}>
           <Text style={commonStyles.bottomContainerButtonText}>Save</Text>
         </TouchableOpacity>

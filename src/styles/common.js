@@ -50,7 +50,7 @@ export const commonStyles = StyleSheet.create({
       borderRadius: 16,
       borderWidth: 1,
       borderColor: 'rgba(255,255,255,0.12)',
-      marginBottom: 15,
+      marginBottom: 5,
     },
     inputAndroid: {
       fontSize: 14,
@@ -62,7 +62,7 @@ export const commonStyles = StyleSheet.create({
       borderRadius: 16,
       borderWidth: 1,
       borderColor: 'rgba(255,255,255,0.12)',
-      marginBottom: 15,
+      marginBottom: 5,
     },
     placeholder: {
       color: '#fff',
@@ -84,6 +84,11 @@ export const commonStyles = StyleSheet.create({
     paddingBottom: 15,
     height: 260,
     color: '#fff',
+    marginTop: 15,
+    marginBottom: 5,
+  },
+  errorText: {
+    color: 'red',
   },
   bottomContainer: {
     flex: 1,

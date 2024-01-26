@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import IconClock from '../images/icon_clock.svg';
 import IconPen from '../images/icon_pen.svg';
+import IconBell from '../images/icon_bell.svg';
+import IconHealth from '../images/icon_health.svg';
 import IconArrow from '../images/arrow.svg';
 import {commonStyles} from '../styles/common';
 import {space} from '../styles/space';
@@ -21,6 +23,13 @@ const HomeScreen = () => {
     acc[note.category].push(note);
     return acc;
   }, {});
+
+  // Map category names to corresponding icons
+  const categoryIconMap = {
+    'Work and Study': <IconPen width={20} height={20} />,
+    'Home Life': <IconBell width={20} height={20} />,
+    'Health and Wellness': <IconHealth width={20} height={20} />,
+  };
 
   return (
     <LinearGradient
@@ -70,7 +79,8 @@ const HomeScreen = () => {
                     ...commonStyles.rowHorzCenter,
                     marginBottom: space.m2,
                   }}>
-                  <IconPen width={20} height={20} />
+                  {/* Use the mapped icon based on the category */}
+                  {categoryIconMap[category]}
                   <Text style={homeStyles.noteTitle}>{category}</Text>
                 </View>
                 {groupedNotes[category].map(note => (

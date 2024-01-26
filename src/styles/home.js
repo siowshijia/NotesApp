@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const homeStyles = StyleSheet.create({
   mainTitle: {
@@ -25,8 +25,5 @@ export const homeStyles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     flex: 1,
-  },
-  noteItemArrow: {
-    marginLeft: 20,
   },
 });
