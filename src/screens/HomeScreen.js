@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import IconClock from '../images/icon_clock.svg';
 import IconPen from '../images/icon_pen.svg';
@@ -15,6 +15,26 @@ const HomeScreen = ({navigation}) => {
       <ScrollView>
         <View style={{paddingTop: 20, paddingBottom: 120}}>
           <View style={{paddingLeft: 20, paddingRight: 20}}>
+          <View
+      style={{
+        // position: 'absolute',
+        // top: 0,
+        // left: 0,
+        // right: 0,
+        // bottom: 0,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // // width: 36,
+        // // height: 36
+      }}>
+      <TouchableOpacity
+        style={{
+          zIndex: 10,
+        }}
+        onPress={() => navigation.navigate('NewNote')}>
+        <IconArrow width={36} height={36} />
+      </TouchableOpacity>
+    </View>
             <View
               style={{
                 flexDirection: 'row',

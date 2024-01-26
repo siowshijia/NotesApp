@@ -48,14 +48,29 @@ const HomeHeader = () => {
 };
 
 const NewNoteHeader = () => {
+  const navigation = useNavigation();
   return (
     <Stack.Navigator initialRouteName="NewNote">
       <Stack.Screen
         name="NewNoteStack"
         component={NewNoteScreen}
         options={{
-          headerLeft: () => <Text style={{textAlign: 'right'}}>New Note</Text>,
+          headerLeft: () => <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{flexDirection: 'row', alignItems: 'center'}}>
+          <IconBack width={24} height={24} />
+          <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
+            {' '}
+            New Note
+          </Text>
+        </TouchableOpacity>,
           headerTitle: null,
+          headerStyle: {
+            backgroundColor: '#280947',
+          },
+          headerTitleStyle: {
+            color: 'rgba(255,255,255,0)',
+          },
         }}
       />
     </Stack.Navigator>
@@ -121,8 +136,32 @@ const SettingsHeader = () => {
   );
 };
 
+const NewNoteButton = (state, descriptors, navigation) => {
+  return (
+    <View
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // width: 36,
+        // height: 36
+      }}>
+      <TouchableOpacity
+        style={{
+          zIndex: 10,
+        }}
+        onPress={() => navigation.navigate('NewNote')}>
+        <IconPlus width={36} height={36} />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
 const BottomTabNavigator = () => {
-  const NewNoteButton = () => null;
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -182,27 +221,6 @@ const BottomTabNavigator = () => {
         ),
       })}>
       <Tab.Screen name="Home" component={HomeHeader} />
-      <Tab.Screen
-        name="NewNote"
-        component={NewNoteButton}
-        options={({navigation}) => ({
-          tabBarButton: () => (
-            <TouchableOpacity
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-              onPress={() => navigation.navigate('NewNote')}>
-              <IconPlus width={36} height={36} />
-            </TouchableOpacity>
-          ),
-        })}
-      />
       <Tab.Screen name="Summary" component={SummaryHeader} />
     </Tab.Navigator>
   );
