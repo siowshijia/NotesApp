@@ -17,6 +17,13 @@ const HomeScreen = () => {
   const navigation = useNavigation();
   const {notes} = useNotes();
 
+  // Function to get the latest notes based on date
+  const getLatestNotes = notes => {
+    return notes
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+  };
+
   // Group notes by category
   const groupedNotes = notes.reduce((acc, note) => {
     acc[note.category] = acc[note.category] || [];
@@ -40,35 +47,32 @@ const HomeScreen = () => {
       <ScrollView>
         <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
           <View style={commonStyles.containerSpacingX}>
-            <View
+            <TouchableOpacity
               style={
                 {
                   // position: 'absolute',
-                  // top: 0,
-                  // left: 0,
-                  // right: 0,
-                  // bottom: 0,
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
-                  // // width: 36,
-                  // // height: 36
+                  // bottom: space.m4,
+                  // right: space.m4,
+                  // zIndex: 10,
                 }
-              }>
-              <TouchableOpacity
-                style={{
-                  zIndex: 10,
-                }}
-                onPress={() => navigation.navigate('NewNote')}>
-                <IconArrow width={36} height={36} />
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                ...commonStyles.rowHorzCenter,
-                marginBottom: space.m6,
-              }}>
-              <IconClock width={20} height={20} />
-              <Text style={homeStyles.mainTitle}>Recently created notes</Text>
+              }
+              onPress={() => navigation.navigate('NewNote')}>
+              <IconArrow width={36} height={36} />
+            </TouchableOpacity>
+            <View style={{marginBottom: space.m6}}>
+              {/* Display message if no notes are available */}
+              {Object.keys(groupedNotes).length === 0 ? (
+                <Text style={homeStyles.mainTitle}>
+                  There are no notes available to be shown.
+                </Text>
+              ) : (
+                <View style={commonStyles.rowHorzCenter}>
+                  <IconClock width={20} height={20} />
+                  <Text style={homeStyles.mainTitle}>
+                    Recently created notes
+                  </Text>
+                </View>
+              )}
             </View>
 
             {/* Render notes by category */}
@@ -83,8 +87,9 @@ const HomeScreen = () => {
                   {categoryIconMap[category]}
                   <Text style={homeStyles.noteTitle}>{category}</Text>
                 </View>
-                {groupedNotes[category].map(note => (
-                  <NoteItem key={note.id} note={note} />
+                {/* Display the latest 3 notes for each category in descending order */}
+                {getLatestNotes(groupedNotes[category]).map((note, index) => (
+                  <NoteItem key={index} note={note} />
                 ))}
               </View>
             ))}

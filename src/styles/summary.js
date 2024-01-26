@@ -14,11 +14,8 @@ export const summaryStyles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingVertical: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    padding: 20,
+    borderRadius: 20,
     backgroundColor: 'rgba(255,255,255,0.05)',
   },
   categoryContainer: {

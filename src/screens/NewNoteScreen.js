@@ -23,6 +23,8 @@ const NewNoteScreen = () => {
 
   const {addNote} = useNotes();
 
+  const maxCharacters = 200;
+
   const categories = [
     {label: 'Work and Study', value: 'Work and Study'},
     {label: 'Home Life', value: 'Home Life'},
@@ -43,7 +45,7 @@ const NewNoteScreen = () => {
     }
 
     if (selectedCategory && noteText) {
-      // Assuming you have an addNote method in your context
+      // Add note based on the selected category to the NoteData
       addNote({
         category: selectedCategory,
         content: noteText,
@@ -89,11 +91,16 @@ const NewNoteScreen = () => {
               style={commonStyles.textInput}
               multiline
               numberOfLines={5}
+              maxLength={maxCharacters}
               value={noteText}
               onChangeText={text => setNoteText(text)}
               placeholder="Please input note content"
               placeholderTextColor={'#fff'}
             />
+
+            <Text style={commonStyles.characterCounter}>
+              {noteText.length}/{maxCharacters}
+            </Text>
 
             {!!noteError && (
               <Text style={commonStyles.errorText}>{noteError}</Text>

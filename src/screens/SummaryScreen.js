@@ -46,34 +46,46 @@ const SummaryScreen = () => {
       />
       <ScrollView>
         <View style={summaryStyles.scrollView}>
-          <View style={summaryStyles.contentContainer}>
-            {Object.keys(categoryCounts).map(category => (
-              <View key={category} style={summaryStyles.categoryContainer}>
-                <View style={commonStyles.rowHorzCenter}>
-                  <Image
-                    source={getCategoryIconSource(category)}
-                    style={summaryStyles.categoryIcon}
-                  />
-                  <Text style={commonStyles.titleTextMd}>{category}</Text>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('Home')}
-                    style={summaryStyles.detailButton}>
-                    <Text style={summaryStyles.detailButtonText}>Detail</Text>
-                  </TouchableOpacity>
+          {Object.keys(categoryCounts).length > 0 ? (
+            <View style={summaryStyles.contentContainer}>
+              {/* Render categories if there are notes */}
+              {Object.keys(categoryCounts).map(category => (
+                <View key={category} style={summaryStyles.categoryContainer}>
+                  <View style={commonStyles.rowHorzCenter}>
+                    <Image
+                      source={getCategoryIconSource(category)}
+                      style={summaryStyles.categoryIcon}
+                    />
+                    <Text style={commonStyles.titleTextMd}>{category}</Text>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate('Home')}
+                      style={summaryStyles.detailButton}>
+                      <Text style={summaryStyles.detailButtonText}>Detail</Text>
+                    </TouchableOpacity>
+                  </View>
+                  <View style={summaryStyles.categoryDetails}>
+                    <Text style={summaryStyles.categoryDetailsText}>
+                      {`This topic has a total of ${categoryCounts[category]} ${
+                        categoryCounts[category] === 1 ||
+                        categoryCounts[category] === 0
+                          ? 'record'
+                          : 'records'
+                      }.`}
+                    </Text>
+                  </View>
                 </View>
-                <View style={summaryStyles.categoryDetails}>
-                  <Text style={summaryStyles.categoryDetailsText}>
-                    {`This topic has a total of ${categoryCounts[category]} ${
-                      categoryCounts[category] === 1 ||
-                      categoryCounts[category] === 0
-                        ? 'record'
-                        : 'records'
-                    }.`}
-                  </Text>
-                </View>
+              ))}
+            </View>
+          ) : (
+            // Display message if no notes are found
+            <View style={commonStyles.containerSpacingX}>
+              <View style={summaryStyles.contentContainer}>
+                <Text style={commonStyles.titleTextMd}>
+                  No categories to be shown as notes are empty
+                </Text>
               </View>
-            ))}
-          </View>
+            </View>
+          )}
         </View>
       </ScrollView>
     </LinearGradient>

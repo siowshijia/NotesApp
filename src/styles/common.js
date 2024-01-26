@@ -90,6 +90,10 @@ export const commonStyles = StyleSheet.create({
   errorText: {
     color: 'red',
   },
+  characterCounter: {
+    textAlign: 'right',
+    color: '#fff',
+  },
   bottomContainer: {
     flex: 1,
     width: '100%',

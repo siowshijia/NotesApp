@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const settingsStyles = StyleSheet.create({
   linkButton: {
@@ -10,5 +10,24 @@ export const settingsStyles = StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
+  },
+  popupPosition: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 5,
+    alignItems: 'center',
+  },
+  popupContainer: {
+    borderRadius: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    width: 180,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  popupText: {
+    color: '#fff',
+    fontSize: 16,
   },
 });

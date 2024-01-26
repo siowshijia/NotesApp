@@ -1,5 +1,12 @@
-import React from 'react';
-import {View, Text, Linking, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  Linking,
+  TouchableOpacity,
+  Alert,
+  Animated,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import LinkButton from '../components/LinkButton';
 import IconSupport from '../images/icon_support.svg';
@@ -9,10 +16,62 @@ import IconAbout from '../images/icon_about.svg';
 import {commonStyles} from '../styles/common';
 import {settingsStyles} from '../styles/settings';
 import {space} from '../styles/space';
+import {useNotes} from '../context/NotesContext';
 
 const SettingsScreen = () => {
   const handleOpenLink = async url => {
     await Linking.openURL(url);
+  };
+
+  const {deleteAllNotes} = useNotes();
+  const [showPopout, setShowPopout] = useState(false);
+  const [fadeAnim] = useState(new Animated.Value(1)); // Set initial value to 1
+
+  const fadeIn = () => {
+    setShowPopout(true);
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 500,
+      useNativeDriver: true,
+    }).start(() => {
+      setShowPopout(false); // Hide the popout after fade-out
+    });
+  };
+
+  const handleDeleteAllNotes = () => {
+    Alert.alert(
+      'Delete All Notes',
+      'Are you sure you want to delete all notes?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Delete',
+          onPress: () => {
+            // Call the deleteAllNotes function
+            deleteAllNotes();
+            fadeIn();
+
+            // Hide the popout after 3 seconds
+            setTimeout(() => {
+              fadeOut();
+            }, 3000);
+          },
+          style: 'destructive',
+        },
+      ],
+      {cancelable: false},
+    );
   };
 
   return (
@@ -61,26 +120,34 @@ const SettingsScreen = () => {
         <LinkButton
           onPress={() => handleOpenLink('https://www.google.com')}
           icon={
-            <IconAbout 
-              width={24} 
-              height={24} 
-              style={{marginRight: space.m3}} 
-            />
+            <IconAbout width={24} height={24} style={{marginRight: space.m3}} />
           }
           text="About Us"
         />
       </View>
       <View style={commonStyles.bottomContainer}>
         <TouchableOpacity
-          onPress={() => {
-            handleOpenLink('https://www.google.com');
-          }}
+          onPress={handleDeleteAllNotes}
           style={commonStyles.bottomContainerButton}>
           <Text style={commonStyles.bottomContainerButtonText}>
             Delete All Notes
           </Text>
         </TouchableOpacity>
       </View>
+
+      {/* Popout message */}
+      {showPopout && (
+        <Animated.View
+          style={{...settingsStyles.popupPosition, opacity: fadeAnim}}>
+          <LinearGradient
+            colors={['#C724E1', '#4E22CC']}
+            style={settingsStyles.popupContainer}>
+            <Text style={settingsStyles.popupText}>
+              All notes have been cleared!
+            </Text>
+          </LinearGradient>
+        </Animated.View>
+      )}
     </LinearGradient>
   );
 };
