@@ -5,6 +5,7 @@ export const space = {
   m3: 15,
   m4: 20,
   m5: 25,
+  m6: 30,
 
   // Padding
   p1: 5,
@@ -12,5 +13,6 @@ export const space = {
   p3: 15,
   p4: 20,
   p5: 25,
+  p6: 30,
   pNavSpace: 120,
 };
