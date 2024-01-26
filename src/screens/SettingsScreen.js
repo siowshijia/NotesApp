@@ -8,7 +8,7 @@ import IconPrivacy from '../images/icon_privacy.svg';
 import IconAbout from '../images/icon_about.svg';
 import {commonStyles} from '../styles/common';
 import {settingsStyles} from '../styles/settings';
-import space from '../styles/space';
+import {space} from '../styles/space';
 
 const SettingsScreen = () => {
   const handleOpenLink = async url => {

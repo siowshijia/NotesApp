@@ -1,4 +1,4 @@
-const space = {
+export const space = {
   // Margin
   m1: 5,
   m2: 10,
@@ -12,6 +12,5 @@ const space = {
   p3: 15,
   p4: 20,
   p5: 25,
+  pNavSpace: 120,
 };
-
-export default space;

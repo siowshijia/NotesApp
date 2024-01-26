@@ -4,14 +4,11 @@ export const commonStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  text: {
-    fontSize: 16,
-    color: '#333',
+  containerSpacingX: {
+    paddingHorizontal: 20,
   },
-  heading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
+  containerSpacingY: {
+    paddingVertical: 20,
   },
   titleText: {
     color: '#fff',
@@ -22,6 +19,52 @@ export const commonStyles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     flex: 1,
+  },
+  pickerContainer: {
+    inputIOS: {
+      fontSize: 14,
+      paddingVertical: 20,
+      paddingHorizontal: 15,
+      color: '#fff',
+      paddingRight: 30,
+      backgroundColor: 'rgba(255,255,255,0.12)',
+      borderRadius: 16,
+      borderWidth: 1,
+      borderColor: 'rgba(255,255,255,0.12)',
+      marginBottom: 15,
+    },
+    inputAndroid: {
+      fontSize: 14,
+      paddingVertical: 20,
+      paddingHorizontal: 15,
+      color: '#fff',
+      paddingRight: 30,
+      backgroundColor: 'rgba(255,255,255,0.12)',
+      borderRadius: 16,
+      borderWidth: 1,
+      borderColor: 'rgba(255,255,255,0.12)',
+      marginBottom: 15,
+    },
+    placeholder: {
+      color: '#fff',
+      fontSize: 14,
+    },
+    iconContainer: {
+      top: 20,
+      right: 12,
+    },
+  },
+  textInput: {
+    backgroundColor: 'rgba(255,255,255,0.12)',
+    borderRadius: 16,
+    padding: 15,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
+    paddingHorizontal: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
+    height: 260,
+    color: '#fff',
   },
   bottomContainer: {
     flex: 1,
