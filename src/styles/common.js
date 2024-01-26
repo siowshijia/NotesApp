@@ -20,6 +20,14 @@ export const commonStyles = StyleSheet.create({
     fontSize: 16,
     flex: 1,
   },
+  rowHorzCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  rowVertCenter: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   pickerContainer: {
     inputIOS: {
       fontSize: 14,
