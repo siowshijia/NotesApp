@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, Text, TouchableOpacity} from 'react-native';
+import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -9,6 +9,7 @@ import NewNoteScreen from './src/screens/NewNoteScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import IconSettings from './src/images/icon_settings.svg';
 import IconPlus from './src/images/icon_plus.svg';
+import IconBack from './src/images/icon_back.svg';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Stack = createNativeStackNavigator();
@@ -68,7 +69,11 @@ const SummaryHeader = () => {
         name="SummaryStack"
         component={SummaryScreen}
         options={{
-          headerLeft: () => <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>Summary</Text>,
+          headerLeft: () => (
+            <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
+              Summary
+            </Text>
+          ),
           headerTitle: null,
           headerStyle: {
             backgroundColor: '#280947',
@@ -84,13 +89,25 @@ const SummaryHeader = () => {
 };
 
 const SettingsHeader = () => {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator initialRouteName="Settings">
       <Stack.Screen
         name="SettingsStack"
         component={SettingsScreen}
         options={{
-          headerLeft: () => <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>Settings</Text>,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{flexDirection: 'row', alignItems: 'center'}}>
+              <IconBack width={24} height={24} />
+              <Text style={{color: '#fff', fontSize: 24, fontWeight: '600'}}>
+                {' '}
+                Settings
+              </Text>
+            </TouchableOpacity>
+          ),
           headerTitle: null,
           headerStyle: {
             backgroundColor: '#280947',
