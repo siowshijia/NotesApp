@@ -68,6 +68,7 @@ iOS:
 - [react-native-svg](https://github.com/react-native-svg/react-native-svg): Version 14.1.0
 - [react-native-svg-transformer](https://github.com/kristerkari/react-native-svg-transformer): Version 1.3.0
 
+
 ## Assumptions
 
 In this project, there are some assumptions I have made and made tweaks around it:
@@ -75,16 +76,20 @@ In this project, there are some assumptions I have made and made tweaks around i
 - On Home screen, there are no instructions where the individual notes will be direct to, so I removed the arrow and show the whole note despite a requirement to show max 20 characters.
 - As I do not have access to the font file, I did not set any font-family in this project, hence text will be seen as the base font.
 
+
 ## Incomplete Features
 In this 48 hours, I have completed the functions in the requirement. But, there are some that did not complete on time:
 - Only working on iOS, spent working on iOS environment and did not have time to test out on Android
 - As seen on the screenshot provided on top, the header is shorter and not rounded at the bottom, but tried my best to look as identical as possible.
-- I am unable to create the New Note button at the center of the bottom tabs, hence I create a button at the top of Home screen instead. 
+- I am unable to create the New Note button at the center of the bottom tabs, hence I create a button at the top of Home screen instead.
+
 
 ## Contact
 
 **Maintainer:** Siow Shi Jia
+
 **Email:** siowshijia@gmail.com
+
 **LinkedIn:** https://www.linkedin.com/in/siow-shi-jia-450917144
 
   
