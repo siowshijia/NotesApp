@@ -73,7 +73,8 @@ iOS:
 
 In this project, there are some assumptions I have made and made tweaks around it:
 - Icons should be used from a library but to make it identical to mockup, I export and import them as svg.
-- On Home screen, there are no instructions where the individual notes will be direct to, so I removed the arrow and show the whole note despite a requirement to show max 20 characters.
+- On Home screen, there are no instructions where the individual notes will be directed to, so I removed the arrow and show the whole note despite a requirement to show max 20 characters.
+- On Summary screen, there are no instructions where detail will be directed to, so I link it to Home screen.
 - As I do not have access to the font file, I did not set any font-family in this project, hence text will be seen as the base font.
 
 
