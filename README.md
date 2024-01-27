@@ -13,11 +13,11 @@ NotesApp is a simple React Native application for managing your notes. It allows
 
 iOS:
 
-![Simulator Screenshot 1](https://github.com/siowshijia/NotesApp/assets/17192763/4002d448-7bb3-4dd9-ae92-c5c2d41fcc8f)
-![Simulator Screenshot 2](https://github.com/siowshijia/NotesApp/assets/17192763/0c523b89-b245-44b3-b5fc-bf16c41fc57b)
-![Simulator Screenshot 3](https://github.com/siowshijia/NotesApp/assets/17192763/aeab884d-193d-4782-b49c-469ef19853dd)
-![Simulator Screenshot 4](https://github.com/siowshijia/NotesApp/assets/17192763/5f722c04-36f6-49b5-924e-456e9d6e7241)
-![Simulator Screenshot 5](https://github.com/siowshijia/NotesApp/assets/17192763/78af4cc9-e88e-4b2e-9b43-f6f47dcabff6)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-01-27 at 12 50 29](https://github.com/siowshijia/NotesApp/assets/17192763/3cc84500-2a2f-4f3a-8243-e7fc29a44435)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-01-27 at 12 50 35](https://github.com/siowshijia/NotesApp/assets/17192763/37790cae-faea-4286-8bef-8fd0f68d48a8)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-01-27 at 12 50 42](https://github.com/siowshijia/NotesApp/assets/17192763/3d1a4955-684f-4697-8b97-59be2aae9155)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-01-27 at 12 50 54](https://github.com/siowshijia/NotesApp/assets/17192763/88d6dbed-2649-45b9-9153-14356743c0b4)
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-01-27 at 12 50 48](https://github.com/siowshijia/NotesApp/assets/17192763/0ce65f9c-4b12-4efb-9379-ff9ad582dd6a)
 
 
 ## Getting Started
