@@ -119,7 +119,7 @@ const NewNoteScreen = () => {
         <TouchableOpacity
           onPress={handleSaveNote}
           style={commonStyles.bottomContainerButton}>
-          <Text style={commonStyles.bottomContainerButtonText}>Save</Text>
+          <Text style={commonStyles.textWhite}>Save</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>

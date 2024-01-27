@@ -94,6 +94,13 @@ export const commonStyles = StyleSheet.create({
     textAlign: 'right',
     color: '#fff',
   },
+  primaryButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F94695',
+    borderRadius: 30,
+    padding: 10,
+  },
   bottomContainer: {
     flex: 1,
     width: '100%',
@@ -115,7 +122,7 @@ export const commonStyles = StyleSheet.create({
     borderRadius: 30,
     padding: 10,
   },
-  bottomContainerButtonText: {
+  textWhite: {
     color: '#fff',
   },
 });

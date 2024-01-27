@@ -129,7 +129,7 @@ const SettingsScreen = () => {
         <TouchableOpacity
           onPress={handleDeleteAllNotes}
           style={commonStyles.bottomContainerButton}>
-          <Text style={commonStyles.bottomContainerButtonText}>
+          <Text style={commonStyles.textWhite}>
             Delete All Notes
           </Text>
         </TouchableOpacity>

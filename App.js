@@ -8,11 +8,11 @@ import SummaryScreen from './src/screens/SummaryScreen';
 import NewNoteScreen from './src/screens/NewNoteScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import IconSettings from './src/images/icon_settings.svg';
-import IconPlus from './src/images/icon_plus.svg';
 import IconBack from './src/images/icon_back.svg';
 import LinearGradient from 'react-native-linear-gradient';
 import {commonStyles} from './src/styles/common';
-import { NotesProvider } from './src/context/NotesContext';
+import {NotesProvider} from './src/context/NotesContext';
+import NewNoteButton from './src/components/NewNoteButton';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -128,31 +128,6 @@ const SettingsHeader = () => {
   );
 };
 
-const NewNoteButton = (state, descriptors, navigation) => {
-  return (
-    <View
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        // width: 36,
-        // height: 36
-      }}>
-      <TouchableOpacity
-        style={{
-          zIndex: 10,
-        }}
-        onPress={() => navigation.navigate('NewNote')}>
-        <IconPlus width={36} height={36} />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
@@ -222,6 +197,8 @@ const App = () => {
           <Stack.Screen name="NewNote" component={NewNoteHeader} />
           <Stack.Screen name="Settings" component={SettingsHeader} />
         </Stack.Navigator>
+        {/* Commented out as the new note button is not working as intended */}
+        {/* <NewNoteButton /> */}
       </NavigationContainer>
     </NotesProvider>
   );

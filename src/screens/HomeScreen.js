@@ -48,16 +48,9 @@ const HomeScreen = () => {
         <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
           <View style={commonStyles.containerSpacingX}>
             <TouchableOpacity
-              style={
-                {
-                  // position: 'absolute',
-                  // bottom: space.m4,
-                  // right: space.m4,
-                  // zIndex: 10,
-                }
-              }
+              style={{...commonStyles.primaryButton, marginBottom: space.m4}}
               onPress={() => navigation.navigate('NewNote')}>
-              <IconArrow width={36} height={36} />
+              <Text style={commonStyles.textWhite}>+ Add New Note</Text>
             </TouchableOpacity>
             <View style={{marginBottom: space.m6}}>
               {/* Display message if no notes are available */}
