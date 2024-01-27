@@ -15,6 +15,7 @@ import IconDown from '../images/icon_down.svg';
 import {commonStyles} from '../styles/common';
 import {space} from '../styles/space';
 import {useNotes} from '../context/NotesContext';
+import categories from '../components/NoteCategories';
 
 const NewNoteScreen = () => {
   const navigation = useNavigation();
@@ -27,25 +28,23 @@ const NewNoteScreen = () => {
 
   const maxCharacters = 200;
 
-  const categories = [
-    {label: 'Work and Study', value: 'Work and Study'},
-    {label: 'Home Life', value: 'Home Life'},
-    {label: 'Health and Wellness', value: 'Health and Wellness'},
-  ];
-
+  // Function to handle the save note action
   const handleSaveNote = () => {
     // Reset errors
     setCategoryError('');
     setNoteError('');
 
+    // Check if a category is selected
     if (!selectedCategory) {
       setCategoryError('Please choose a category.');
     }
 
+    // Check if note content is provided
     if (!noteText) {
       setNoteError('Please input note content.');
     }
 
+    // If both category and note content are provided, save the note
     if (selectedCategory && noteText) {
       // Add note based on the selected category to the NoteData
       addNote({
@@ -74,6 +73,7 @@ const NewNoteScreen = () => {
         <ScrollView>
           <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
             <View style={commonStyles.containerSpacingX}>
+              {/* Category Picker */}
               <RNPickerSelect
                 items={categories}
                 onValueChange={value => setSelectedCategory(value)}
@@ -88,10 +88,12 @@ const NewNoteScreen = () => {
                 }}
               />
 
+              {/* Display category error */}
               {!!categoryError && (
                 <Text style={commonStyles.errorText}>{categoryError}</Text>
               )}
 
+              {/* Note Input */}
               <TextInput
                 style={commonStyles.textInput}
                 multiline
@@ -103,10 +105,12 @@ const NewNoteScreen = () => {
                 placeholderTextColor={'#fff'}
               />
 
+              {/* Character Counter */}
               <Text style={commonStyles.characterCounter}>
                 {noteText.length}/{maxCharacters}
               </Text>
 
+              {/* Display note error */}
               {!!noteError && (
                 <Text style={commonStyles.errorText}>{noteError}</Text>
               )}
@@ -115,6 +119,7 @@ const NewNoteScreen = () => {
         </ScrollView>
       </KeyboardAvoidingView>
 
+      {/* Save Button */}
       <View style={commonStyles.bottomContainer}>
         <TouchableOpacity
           onPress={handleSaveNote}

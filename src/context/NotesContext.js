@@ -7,12 +7,16 @@ import React, {
 } from 'react';
 import notesData from '../components/NotesData';
 
+// Create a context to manage the state related to notes
 const NotesContext = createContext();
 
+// Reducer function to handle state updates based on actions
 const notesReducer = (state, action) => {
   switch (action.type) {
+    // Add a new note to the state
     case 'ADD_NOTE':
       return [...state, action.payload];
+    // Delete all notes from the state
     case 'DELETE_ALL_NOTES':
       return [];
     default:
@@ -20,12 +24,16 @@ const notesReducer = (state, action) => {
   }
 };
 
+// NotesProvider component to wrap the application and provide the notes state and actions
 export const NotesProvider = ({children}) => {
+  // Initialize state using useReducer with the notesReducer function and initial data
   const [notes, dispatch] = useReducer(notesReducer, notesData);
+  // Track the last note id to generate unique ids for new notes
   const [lastId, setLastId] = useState(
     notes.length > 0 ? notes[notes.length - 1].id : 0,
   );
 
+  // Add a new note to the state
   const addNote = newNote => {
     const newId = lastId + 1;
     const currentDate = new Date().toISOString();
@@ -34,14 +42,17 @@ export const NotesProvider = ({children}) => {
     setLastId(newId);
   };
 
+  // Delete all notes from the state
   const deleteAllNotes = useCallback(() => {
     dispatch({type: 'DELETE_ALL_NOTES'});
   }, []);
 
+  // Get all notes from the state based on a specified category
   const getNotesByCategory = category => {
     return notes.filter(note => note.category === category);
   };
 
+  // Provide the state and actions through the context
   return (
     <NotesContext.Provider
       value={{notes, addNote, deleteAllNotes, getNotesByCategory}}>
@@ -50,6 +61,7 @@ export const NotesProvider = ({children}) => {
   );
 };
 
+// Custom hook to consume the NotesContext and access the state and actions
 export const useNotes = () => {
   const context = useContext(NotesContext);
   if (!context) {

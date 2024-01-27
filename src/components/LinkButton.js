@@ -1,3 +1,4 @@
+// LinkButton used on settings screen
 import React from 'react';
 import {TouchableOpacity, Text} from 'react-native';
 import IconArrow from '../images/arrow.svg';

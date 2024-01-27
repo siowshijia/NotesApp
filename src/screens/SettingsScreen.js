@@ -81,6 +81,7 @@ const SettingsScreen = () => {
       colors={['#1B284F', '#351159', '#421C45', '#3B184E']}
       style={commonStyles.container}>
       <View style={{padding: space.p4}}>
+        {/* Link buttons with icons to open external links */}
         <LinkButton
           onPress={() => handleOpenLink('https://www.google.com')}
           icon={
@@ -94,7 +95,7 @@ const SettingsScreen = () => {
         />
 
         <LinkButton
-          onPress={() => handleOpenLink('https://www.google.com')}
+          onPress={() => handleOpenLink('https://www.yahoo.sg')}
           icon={
             <IconAgreement
               width={24}
@@ -106,7 +107,7 @@ const SettingsScreen = () => {
         />
 
         <LinkButton
-          onPress={() => handleOpenLink('https://www.google.com')}
+          onPress={() => handleOpenLink('https://www.facebook.com')}
           icon={
             <IconPrivacy
               width={24}
@@ -118,7 +119,7 @@ const SettingsScreen = () => {
         />
 
         <LinkButton
-          onPress={() => handleOpenLink('https://www.google.com')}
+          onPress={() => handleOpenLink('https://www.instagram.com')}
           icon={
             <IconAbout width={24} height={24} style={{marginRight: space.m3}} />
           }
@@ -126,12 +127,11 @@ const SettingsScreen = () => {
         />
       </View>
       <View style={commonStyles.bottomContainer}>
+        {/* Button to delete all notes */}
         <TouchableOpacity
           onPress={handleDeleteAllNotes}
           style={commonStyles.bottomContainerButton}>
-          <Text style={commonStyles.textWhite}>
-            Delete All Notes
-          </Text>
+          <Text style={commonStyles.textWhite}>Delete All Notes</Text>
         </TouchableOpacity>
       </View>
 

@@ -6,7 +6,6 @@ import IconClock from '../images/icon_clock.svg';
 import IconPen from '../images/icon_pen.svg';
 import IconBell from '../images/icon_bell.svg';
 import IconHealth from '../images/icon_health.svg';
-import IconArrow from '../images/arrow.svg';
 import {commonStyles} from '../styles/common';
 import {space} from '../styles/space';
 import {homeStyles} from '../styles/home';
@@ -47,6 +46,7 @@ const HomeScreen = () => {
       <ScrollView>
         <View style={{paddingTop: space.p4, paddingBottom: space.pNavSpace}}>
           <View style={commonStyles.containerSpacingX}>
+            {/* Button to navigate to the "NewNote" screen */}
             <TouchableOpacity
               style={{...commonStyles.primaryButton, marginBottom: space.m4}}
               onPress={() => navigation.navigate('NewNote')}>

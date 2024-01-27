@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,9 +14,11 @@ import {commonStyles} from './src/styles/common';
 import {NotesProvider} from './src/context/NotesContext';
 import NewNoteButton from './src/components/NewNoteButton';
 
+// Navigator instances
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+// Header component for Home screen
 const HomeHeader = () => {
   const navigation = useNavigation();
 
@@ -45,8 +47,10 @@ const HomeHeader = () => {
   );
 };
 
+// Header component for NewNote screen
 const NewNoteHeader = () => {
   const navigation = useNavigation();
+
   return (
     <Stack.Navigator initialRouteName="NewNote">
       <Stack.Screen
@@ -74,6 +78,7 @@ const NewNoteHeader = () => {
   );
 };
 
+// Header component for Summary screen
 const SummaryHeader = () => {
   return (
     <Stack.Navigator initialRouteName="Summary">
@@ -98,6 +103,7 @@ const SummaryHeader = () => {
   );
 };
 
+// Header component for Settings screen
 const SettingsHeader = () => {
   const navigation = useNavigation();
 
@@ -128,6 +134,7 @@ const SettingsHeader = () => {
   );
 };
 
+// Custom BottomTabNavigator
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator

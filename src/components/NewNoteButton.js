@@ -1,3 +1,4 @@
+// Currently not in used
 import React from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import IconPlus from '../images/icon_plus.svg';

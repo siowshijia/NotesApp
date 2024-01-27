@@ -6,6 +6,7 @@ import {summaryStyles} from '../styles/summary';
 import {useNotes} from '../context/NotesContext';
 import {useNavigation} from '@react-navigation/native';
 
+// Function to get the category icon source based on the category name
 const getCategoryIconSource = category => {
   switch (category.toLowerCase()) {
     case 'work and study':
@@ -47,22 +48,26 @@ const SummaryScreen = () => {
       <ScrollView>
         <View style={summaryStyles.scrollView}>
           {Object.keys(categoryCounts).length > 0 ? (
+            // Render categories if there are notes
             <View style={summaryStyles.contentContainer}>
-              {/* Render categories if there are notes */}
               {Object.keys(categoryCounts).map(category => (
                 <View key={category} style={summaryStyles.categoryContainer}>
                   <View style={commonStyles.rowHorzCenter}>
+                    {/* Category Icon */}
                     <Image
                       source={getCategoryIconSource(category)}
                       style={summaryStyles.categoryIcon}
                     />
+                    {/* Category Title */}
                     <Text style={commonStyles.titleTextMd}>{category}</Text>
+                    {/* Detail Button */}
                     <TouchableOpacity
                       onPress={() => navigation.navigate('Home')}
                       style={summaryStyles.detailButton}>
                       <Text style={summaryStyles.detailButtonText}>Detail</Text>
                     </TouchableOpacity>
                   </View>
+                  {/* Category Details */}
                   <View style={summaryStyles.categoryDetails}>
                     <Text style={summaryStyles.categoryDetailsText}>
                       {`This topic has a total of ${categoryCounts[category]} ${
